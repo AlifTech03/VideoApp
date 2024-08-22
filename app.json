@@ -1,28 +1,34 @@
 {
   "expo": {
-    "name": "LearningApp",
-    "slug": "LearningApp",
+    "name": "Aora",
+    "slug": "learningapp",
     "version": "1.0.0",
-    "scheme": "LearningApp",
+    "scheme": "learningapp",
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/playstore.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
     },
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/playstore.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/images/splashscreen.png",
+      "resizeMode": "cover"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -32,7 +38,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/playstore.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.dev.learningapp"
