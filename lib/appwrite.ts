@@ -23,15 +23,15 @@ type FormType = {
 const config = {
     endpoint: "https://cloud.appwrite.io/v1",
     platform: "com.dev.learningapp",
-    projectId: "66b37ba100000963da54",
-    databaseId: "66b38ac700399527affa",
-    userCollectionId: "66b38ae40030add683ed",
-    videosCollectionId: "66b38b020028c7bdca77",
-    storageId: "66b39b4d000b4f207130"
+    projectId: process.env.PROJECT_ID as string,
+    databaseId: process.env.DATABASE_ID as string,
+    userCollectionId: process.env.USER_COLLECTION_ID as string,
+    videosCollectionId: process.env.VIDEOS_COLLECTION_ID as string,
+    storageId: process.env.STORAGE_ID as string
 }
 
 // Init your React Native SDK
-const { endpoint:
+const { endpoint,
     platform,
     projectId,
     databaseId,
@@ -40,9 +40,9 @@ const { endpoint:
     storageId } = config
 const client = new Client();
 client
-    .setEndpoint(config.endpoint) // Your Appwrite Endpoint
-    .setProject(config.projectId) // Your project ID
-    .setPlatform(config.platform) // Your application ID or bundle ID.
+    .setEndpoint(endpoint) // Your Appwrite Endpoint
+    .setProject(projectId) // Your project ID
+    .setPlatform(platform) // Your application ID or bundle ID.
     ;
 
 const account = new Account(client);

@@ -1,5 +1,5 @@
-import { View, Text, FlatList, Image, RefreshControl } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, Image, RefreshControl, LogBox } from 'react-native';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { images } from '@/constants';
@@ -10,30 +10,10 @@ import useAppWrite from '@/lib/useAppWrite';
 import { GetAllPosts, GetLatestPosts } from '@/lib/appwrite';
 import VideoCard from '@/components/VideoCard';
 import { useGlobalContext } from '@/context/GlobalProvider';
-import { useSQLiteContext } from 'expo-sqlite';
+
+LogBox.ignoreAllLogs();
 
 const Home = () => {
-  const db = useSQLiteContext();
-  const [medicines, setMedicines] = useState<any[]>([]);
-  const getData = async () => {
-    try {
-      const allrows = await db.getAllAsync('SELECT * FROM medicines');
-      setMedicines(allrows);
-    } catch (error) {
-      console.log('Error', error);
-    }
-  };
-
-  const updateMed = async () => {};
-  
-  useEffect(() => {
-    db.withTransactionAsync(async () => {
-      await getData();
-    });
-  }, [db]);
-
-  console.log('medicines', medicines[0]);
-
   const { user } = useGlobalContext();
   const [refresh, setRefresh] = useState(false);
   const { data, refetch } = useAppWrite(GetAllPosts);

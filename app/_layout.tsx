@@ -26,11 +26,6 @@ export default function Layout() {
 
   if (!fontLoaded && !error) return null;
   return (
-    <Suspense fallback={<Text>Database is loading...</Text>}>
-      <SQLite.SQLiteProvider
-        databaseName="pharmoasis.db"
-        assetSource={{ assetId: require('@/assets/pharmoasis.db') }}
-        useSuspense>
         <GlobalProvider>
           <Stack>
             <Stack.Screen
@@ -59,7 +54,7 @@ export default function Layout() {
             />
           </Stack>
         </GlobalProvider>
-      </SQLite.SQLiteProvider>
-    </Suspense>
+
+
   );
 }
