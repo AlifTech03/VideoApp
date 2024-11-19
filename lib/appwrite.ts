@@ -1,6 +1,6 @@
 import { Account, Avatars, Client, Databases, ID, ImageGravity, Query, Storage } from 'react-native-appwrite';
 import * as ImagePicker from 'expo-image-picker';
-
+import {PROJECT_ID, DATABASE_ID, USER_COLLECTION_ID, VIDEOS_COLLECTION_ID, STORAGE_ID  } from '@env';
 type CreateUserType = {
     email: string,
     password: string,
@@ -23,12 +23,16 @@ type FormType = {
 const config = {
     endpoint: "https://cloud.appwrite.io/v1",
     platform: "com.dev.learningapp",
-    projectId: process.env.PROJECT_ID as string,
-    databaseId: process.env.DATABASE_ID as string,
-    userCollectionId: process.env.USER_COLLECTION_ID as string,
-    videosCollectionId: process.env.VIDEOS_COLLECTION_ID as string,
-    storageId: process.env.STORAGE_ID as string
+    projectId: PROJECT_ID,
+    databaseId: DATABASE_ID,
+    userCollectionId: USER_COLLECTION_ID,
+    videosCollectionId: VIDEOS_COLLECTION_ID,
+    storageId: STORAGE_ID
 }
+
+
+console.log(PROJECT_ID);
+console.log(process.env.PROJECT_ID);
 
 // Init your React Native SDK
 const { endpoint,
